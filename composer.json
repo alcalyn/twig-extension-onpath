@@ -1,0 +1,24 @@
+{
+    "name":         "alcalyn/twig-extension-onpath",
+    "license":      "MIT",
+    "type":         "twig-extension",
+    "description":  "Twig extension for Symfony 2, display a string depending on current route (usefull for active menu hover).",
+    "homepage":     "https://github.com/alcalyn/twig-extension-onpath",
+    "keywords":     ["symfony", "twig", "extension", "route"],
+    "authors": [
+        {
+            "name": "Julien Maulny",
+            "email": "doubjulien@hotmail.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.2",
+        "twig/twig": "~1.0",
+        "symfony/http-foundation": "~2.1"
+    },
+    "autoload": {
+        "psr-0": { "Alcalyn\\Extension\\Twig": "" }
+    },
+    "target-dir": "Alcalyn/Extension/Twig"
+}
