@@ -1,7 +1,7 @@
 {
     "name":         "alcalyn/twig-extension-onpath",
     "license":      "MIT",
-    "type":         "twig-extension",
+    "type":         "library",
     "description":  "Twig extension for Symfony 2, display a string depending on current route (usefull for active menu hover).",
     "homepage":     "https://github.com/alcalyn/twig-extension-onpath",
     "keywords":     ["symfony", "twig", "extension", "route"],
