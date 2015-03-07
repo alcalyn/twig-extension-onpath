@@ -27,6 +27,11 @@ class OnPath extends Twig_Extension
     private $request;
     
     /**
+     * @var \Symfony\Component\HttpFoundation\RequestStack
+     */
+    private $requestStack;
+    
+    /**
      * Inject RequestStack service here.
      * For Symfony < 2.4, use setRequest() method instead.
      * 
@@ -51,7 +56,7 @@ class OnPath extends Twig_Extension
             );
         }
         
-        $this->request = $requestStack->getMasterRequest();
+        $this->requestStack = $requestStack;
     }
     
     /**
@@ -63,6 +68,18 @@ class OnPath extends Twig_Extension
     {
         $this->request = $request;
     }
+    
+    /**
+     * @return Request
+     */
+    public function getRequest()
+    {
+        if (null === $this->request) {
+            return $this->requestStack->getMasterRequest();
+        } else {
+            return $this->request;
+        }
+    }
 
     /**
      * @return array
@@ -71,15 +88,6 @@ class OnPath extends Twig_Extension
     {
         return array(
             'onpath' => new Twig_Filter_Method($this, 'onpath'),
-        );
-    }
-
-    /**
-     * @return array
-     */
-    public function getFunctions()
-    {
-        return array(
         );
     }
 
@@ -96,16 +104,7 @@ class OnPath extends Twig_Extension
      */
     public function onpath()
     {
-        if (null === $this->request) {
-            throw new OnPathException(
-                'Request is null. '
-                . 'You must provide current request to OnPath twig extension '
-                . 'by calling setRequestStack, or setRequest for symfony <2.4'
-            );
-        }
-        
-        $current_route = $this->request->get('_route');
-
+        $current_route = $this->getRequest()->get('_route');
         $routes = func_get_args();
         $string = array_shift($routes);
 
