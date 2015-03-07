@@ -24,6 +24,10 @@ Through composer:
 
 ## Configuration
 
+For Silex, see [OnPath integration guide for Silex](doc/integration_silex.md).
+
+For Symfony2, see below:
+
 Just register it as a service.
 
 > **Warning**: If you are using **Symfony < 2.4**, don't use this declaration, but the next one.
